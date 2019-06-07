@@ -344,43 +344,53 @@
           
             <p>学习笔记。</p>
 <h1 id="8-1-异常是什么"><a href="#8-1-异常是什么" class="headerlink" title="8.1 异常是什么"></a>8.1 异常是什么</h1><ul>
-<li>Python使用异常  对象   表示异常状态，并在遇到错误时引发异常；</li>
-<li>异常对象没有被捕获时，程序将<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- 每个异常都是某个类的```实例```；</span><br><span class="line">- 通过捕获异常，可以采取相应的措施使程序```继续进行```，而不是放任整个程序失败后终止。</span><br><span class="line"></span><br><span class="line">&lt;hr/&gt;</span><br><span class="line"></span><br><span class="line"># 8.2 让事情沿你指定的轨道出错</span><br><span class="line"></span><br><span class="line">让错误尽在你的掌握之中。</span><br><span class="line"></span><br><span class="line">## 8.2.1 raise语句</span><br><span class="line"></span><br><span class="line">raise语句用来引发异常。raise语句的参数是一个类（必须是Exception的子类）或者是实例。当用类作为参数时，将自动创建一个实例（归根结底就是一个异常实例）。</span><br></pre></td></tr></table></figure></li>
+<li>Python使用异常 对象  表示异常状态，并在遇到错误时引发异常；</li>
+<li>异常对象没有被捕获时，程序将终止并显示错误信息；</li>
+<li>每个异常都是某个类的实例；</li>
+<li>通过捕获异常，可以采取相应的措施使程序继续进行，而不是放任整个程序失败后终止。</li>
 </ul>
-<p>raise Exception</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">结果：</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/17108100-49ac063dfc9f9de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">可以在参数后加上自己设定的相关信息。</span><br></pre></td></tr></table></figure>
+<hr>
 
-<p>raise Exception(“我是一个天大的错误！”)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">结果：![](https://upload-images.jianshu.io/upload_images/17108100-7318fbceb8ceb542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">#####关于异常类</span><br><span class="line">Python内置了多个异常类，了解一下：</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/17108100-a0b5cbc0d4761f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">&lt;hr/&gt;</span><br><span class="line">## 8.2.2 自定义的异常类</span><br><span class="line">我们可以创建自己的异常类。比如模拟宇宙飞船飞行的python程序正在运行，突然飞船内的“超光速推进装置”过载，这时候就会引发异常。为了更好地表示错误，我们不必使用python内置的类，转而创建自己的子类HyperdriverError，用它来表示“超光速推进装置”的错误，这样就会更自然一些。</span><br><span class="line">**如何创建自己的异常类？**</span><br><span class="line">务必要直接或者间接的继承Exception（从它的子类继承就是间接）。</span><br><span class="line">类似于这样：</span><br></pre></td></tr></table></figure>
+<h1 id="8-2-让事情沿你指定的轨道出错"><a href="#8-2-让事情沿你指定的轨道出错" class="headerlink" title="8.2 让事情沿你指定的轨道出错"></a>8.2 让事情沿你指定的轨道出错</h1><p>让错误尽在你的掌握之中。</p>
+<h2 id="8-2-1-raise语句"><a href="#8-2-1-raise语句" class="headerlink" title="8.2.1 raise语句"></a>8.2.1 raise语句</h2><p>raise语句用来引发异常。raise语句的参数是一个类（必须是Exception的子类）或者是实例。当用类作为参数时，将自动创建一个实例（归根结底就是一个异常实例）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raise Exception</span><br></pre></td></tr></table></figure>
 
-<p>class HyperdriverError(Exception):<br>    pass</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr/&gt;</span><br><span class="line"># 8.3 捕获异常</span><br><span class="line">如果出现了异常，可以逮住它们，把它们都“做掉”。</span><br><span class="line">类似于java中的try/catch，python中使用try/except处理异常。</span><br><span class="line">一个🌰：比如要实现两个数相除的程序，但是如果分母为0，就会引发错误使得程序终止，我们可以捕捉ZeroDivisionError来处理异常。</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-49ac063dfc9f9de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>可以在参数后加上自己设定的相关信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raise Exception(&quot;我是一个天大的错误！&quot;)</span><br></pre></td></tr></table></figure>
 
-<p>try:<br>    x = int(input(“请输入分子：”))<br>    y = int(input(“请输入分母：”))<br>    print(x/y)<br>except ZeroDivisionError:<br>    print(“分母不能为0！”)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">结果：</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/17108100-d7eb1b74ee182673.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">&lt;hr/&gt;</span><br><span class="line">## 8.3.1 不用提供参数</span><br><span class="line">捕获了异常之后，如果想要使得异常继续向上一层传播，可以再次使用没有参数的raise重新引发异常。</span><br><span class="line">书中的一个🌰：</span><br></pre></td></tr></table></figure>
+<p>结果：<img src="https://upload-images.jianshu.io/upload_images/17108100-7318fbceb8ceb542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>#####关于异常类<br>Python内置了多个异常类，了解一下：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-a0b5cbc0d4761f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+## 8.2.2 自定义的异常类
+我们可以创建自己的异常类。比如模拟宇宙飞船飞行的python程序正在运行，突然飞船内的“超光速推进装置”过载，这时候就会引发异常。为了更好地表示错误，我们不必使用python内置的类，转而创建自己的子类HyperdriverError，用它来表示“超光速推进装置”的错误，这样就会更自然一些。
+**如何创建自己的异常类？**
+务必要直接或者间接的继承Exception（从它的子类继承就是间接）。
+类似于这样：
 
-<p>class Calculator:<br>    muffled = False</p>
-<pre><code>def calc(self, expr):
-    try:
-        return eval(expr)
-    except ZeroDivisionError:
-        if self.muffled:
-            print(&quot;分母不能为0！&quot;)
-        else:
-            raise </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">类中定义了一个抑制开关muffled，当开关打开时，如果发生了除零错误，异常就会被捕捉到，打印“分母不能为0！”；开关关闭时，就会重新引发异常（raise），使异常向上传播。需要注意的时，在这个例子中当异常被捕捉到时，由于函数calc没有返回值，将返回None。</span><br><span class="line">例子的运行演示：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class HyperdriverError(Exception):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
 
-<p>#正常情况</p>
-<p>In [2]: calculator = Calculator()<br>   …: calculator.calc(“10/2”)<br>Out[2]: 5.0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+# 8.3 捕获异常
+如果出现了异常，可以逮住它们，把它们都“做掉”。
+类似于java中的try/catch，python中使用try/except处理异常。
+一个🌰：比如要实现两个数相除的程序，但是如果分母为0，就会引发错误使得程序终止，我们可以捕捉ZeroDivisionError来处理异常。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">    y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">    print(x/y)</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    print(&quot;分母不能为0！&quot;)</span><br></pre></td></tr></table></figure>
 
-<p>#关闭抑制时</p>
-<h2 id="In-3-calculator-calc-“10-0”"><a href="#In-3-calculator-calc-“10-0”" class="headerlink" title="In [3]: calculator.calc(“10/0”)"></a>In [3]: calculator.calc(“10/0”)</h2><p>ZeroDivisionError                         Traceback (most recent call last)<br><ipython-input-3-510121f4d783> in <module><br>—-&gt; 1 calculator.calc(“10/0”)<br>ZeroDivisionError: division by zero</module></ipython-input-3-510121f4d783></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-d7eb1b74ee182673.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+## 8.3.1 不用提供参数
+捕获了异常之后，如果想要使得异常继续向上一层传播，可以再次使用没有参数的raise重新引发异常。
+书中的一个🌰：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Calculator:</span><br><span class="line">    muffled = False</span><br><span class="line"></span><br><span class="line">    def calc(self, expr):</span><br><span class="line">        try:</span><br><span class="line">            return eval(expr)</span><br><span class="line">        except ZeroDivisionError:</span><br><span class="line">            if self.muffled:</span><br><span class="line">                print(&quot;分母不能为0！&quot;)</span><br><span class="line">            else:</span><br><span class="line">                raise</span><br></pre></td></tr></table></figure>
 
-<p>#开启抑制时<br>In [4]: calculator.muffled = True</p>
-<p>In [5]: calculator.calc(“10/0”)<br>分母不能为0！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以看到，关闭抑制时，异常继续向上传播，如果在上一层没有对其进行捕捉，就会引发程序错误并终止。</span><br><span class="line">在except子句中，可以通过raise引发别的异常。在这种情况下，引发except的原始异常会作为异常```上下文```储存起来，并会显示在最终的错误消息中。</span><br><span class="line">栗子：</span><br></pre></td></tr></table></figure>
+<p>类中定义了一个抑制开关muffled，当开关打开时，如果发生了除零错误，异常就会被捕捉到，打印“分母不能为0！”；开关关闭时，就会重新引发异常（raise），使异常向上传播。需要注意的时，在这个例子中当异常被捕捉到时，由于函数calc没有返回值，将返回None。<br>例子的运行演示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#正常情况</span><br><span class="line"></span><br><span class="line">In [2]: calculator = Calculator()</span><br><span class="line">   ...: calculator.calc(&quot;10/2&quot;)</span><br><span class="line">Out[2]: 5.0</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#关闭抑制时</span><br><span class="line">In [3]: calculator.calc(&quot;10/0&quot;)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ZeroDivisionError                         Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-3-510121f4d783&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 calculator.calc(&quot;10/0&quot;)</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#开启抑制时</span><br><span class="line">In [4]: calculator.muffled = True</span><br><span class="line"></span><br><span class="line">In [5]: calculator.calc(&quot;10/0&quot;)</span><br><span class="line">分母不能为0！</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，关闭抑制时，异常继续向上传播，如果在上一层没有对其进行捕捉，就会引发程序错误并终止。<br>在except子句中，可以通过raise引发别的异常。在这种情况下，引发except的原始异常会作为异常<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">栗子：</span><br></pre></td></tr></table></figure></p>
 <p>try:<br>    1/0<br>except ZeroDivisionError:<br>    raise ValueError(“捕捉除零异常的时候再次引发了我…”)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">结果：</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/17108100-567cc111f29679a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">可以看到，原始异常和引发的异常都显示到了最终的消息当中。</span><br><span class="line">可以通过```raise...from...```提供自己的上下文，也可以用None禁用上下文。</span><br><span class="line">栗子：</span><br></pre></td></tr></table></figure>
 
