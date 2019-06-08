@@ -41,7 +41,7 @@ rss:
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  #since: 2015
+  since: 2019
 
   # Icon between year and copyright info.
   icon: user
@@ -74,7 +74,7 @@ canonical: true
 seo: false
 
 # If true, will add site-subtitle to index page, added in main hexo config.
-# subtitle: Subtitle
+subtitle: 学如逆水行舟，不进则退
 index_with_subtitle: false
 
 

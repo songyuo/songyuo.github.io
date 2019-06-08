@@ -4,17 +4,22 @@
 
 # Site
 title: 胡扯大全
-subtitle: 
+subtitle: 学如逆水行舟，不进则退
 description: 一把辛酸泪，满纸荒唐言
 keywords:
 author: songyuo
 language: zh-Hans
 timezone:
-since: 2019.6
+since: 2019
 search:
  path: search.xml
  field: post
 
+# 加密
+encrypt:
+  enable: true
+  default_abstract: 这是一篇加密文章。
+  default_message: 输入密码，查看文章。
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
