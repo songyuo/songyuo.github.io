@@ -77,14 +77,14 @@
 
 <meta name="description" content="一把辛酸泪，满纸荒唐言">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="http://yoursite.com/categories/index.html">
 <meta property="og:site_name" content="胡扯大全">
 <meta property="og:description" content="一把辛酸泪，满纸荒唐言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T12:25:47.277Z">
+<meta property="og:updated_time" content="2019-06-07T12:26:42.565Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="categories">
 <meta name="twitter:description" content="一把辛酸泪，满纸荒唐言">
 
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/categories/">
 
 
 
@@ -496,149 +496,18 @@
       
         
           
-            <p>学习笔记。</p>
-<h1 id="8-1-异常是什么"><a href="#8-1-异常是什么" class="headerlink" title="8.1 异常是什么"></a>8.1 异常是什么</h1><ul>
-<li>Python使用异常 对象  表示异常状态，并在遇到错误时引发异常；</li>
-<li>异常对象没有被捕获时，程序将终止并显示错误信息；</li>
-<li>每个异常都是某个类的实例；</li>
-<li>通过捕获异常，可以采取相应的措施使程序继续进行，而不是放任整个程序失败后终止。</li>
-</ul>
-<hr>
+            <center> Python基础教程（第三版）（八）异常</center>
 
-<h1 id="8-2-让事情沿你指定的轨道出错"><a href="#8-2-让事情沿你指定的轨道出错" class="headerlink" title="8.2 让事情沿你指定的轨道出错"></a>8.2 让事情沿你指定的轨道出错</h1><p>让错误尽在你的掌握之中。</p>
-<h2 id="8-2-1-raise语句"><a href="#8-2-1-raise语句" class="headerlink" title="8.2.1 raise语句"></a>8.2.1 raise语句</h2><p>raise语句用来引发异常。raise语句的参数是一个类（必须是Exception的子类）或者是实例。当用类作为参数时，将自动创建一个实例（归根结底就是一个异常实例）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raise Exception</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-49ac063dfc9f9de2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>可以在参数后加上自己设定的相关信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raise Exception(&quot;我是一个天大的错误！&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<img src="https://upload-images.jianshu.io/upload_images/17108100-7318fbceb8ceb542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><strong>关于异常类</strong><br>Python内置了多个异常类，了解一下：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-a0b5cbc0d4761f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<hr>
+<br>
 
 
-<h2 id="8-2-2-自定义的异常类"><a href="#8-2-2-自定义的异常类" class="headerlink" title="8.2.2 自定义的异常类"></a>8.2.2 自定义的异常类</h2><p>我们可以创建自己的异常类。比如模拟宇宙飞船飞行的python程序正在运行，突然飞船内的“超光速推进装置”过载，这时候就会引发异常。为了更好地表示错误，我们不必使用python内置的类，转而创建自己的子类HyperdriverError，用它来表示“超光速推进装置”的错误，这样就会更自然一些。<br><strong>如何创建自己的异常类？</strong><br>务必要直接或者间接的继承Exception（从它的子类继承就是间接）。<br>类似于这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class HyperdriverError(Exception):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h1 id="8-3-捕获异常"><a href="#8-3-捕获异常" class="headerlink" title="8.3 捕获异常"></a>8.3 捕获异常</h1><p>如果出现了异常，可以逮住它们，把它们都“做掉”。<br>类似于java中的try/catch，python中使用try/except处理异常。<br>一个🌰：比如要实现两个数相除的程序，但是如果分母为0，就会引发错误使得程序终止，我们可以捕捉ZeroDivisionError来处理异常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">    y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">    print(x/y)</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    print(&quot;分母不能为0！&quot;)</span><br></pre></td></tr></table></figure>
+	<div class="row">
+    <embed src="/pdf/8.pdf" width="100%" height="550" type="application/pdf">
+	</div>
 
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-d7eb1b74ee182673.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<hr>
-## 8.3.1 不用提供参数
 
-<p>捕获了异常之后，如果想要使得异常继续向上一层传播，可以再次使用没有参数的raise重新引发异常。<br>书中的一个🌰：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Calculator:</span><br><span class="line">    muffled = False</span><br><span class="line"></span><br><span class="line">    def calc(self, expr):</span><br><span class="line">        try:</span><br><span class="line">            return eval(expr)</span><br><span class="line">        except ZeroDivisionError:</span><br><span class="line">            if self.muffled:</span><br><span class="line">                print(&quot;分母不能为0！&quot;)</span><br><span class="line">            else:</span><br><span class="line">                raise</span><br></pre></td></tr></table></figure>
-
-<p>类中定义了一个抑制开关muffled，当开关打开时，如果发生了除零错误，异常就会被捕捉到，打印“分母不能为0！”；开关关闭时，就会重新引发异常（raise），使异常向上传播。需要注意的时，在这个例子中当异常被捕捉到时，由于函数calc没有返回值，将返回None。<br>例子的运行演示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#正常情况</span><br><span class="line"></span><br><span class="line">In [2]: calculator = Calculator()</span><br><span class="line">   ...: calculator.calc(&quot;10/2&quot;)</span><br><span class="line">Out[2]: 5.0</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#关闭抑制时</span><br><span class="line">In [3]: calculator.calc(&quot;10/0&quot;)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ZeroDivisionError                         Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-3-510121f4d783&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 calculator.calc(&quot;10/0&quot;)</span><br><span class="line">ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#开启抑制时</span><br><span class="line">In [4]: calculator.muffled = True</span><br><span class="line"></span><br><span class="line">In [5]: calculator.calc(&quot;10/0&quot;)</span><br><span class="line">分母不能为0！</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，关闭抑制时，异常继续向上传播，如果在上一层没有对其进行捕捉，就会引发程序错误并终止。<br>在except子句中，可以通过raise引发别的异常。在这种情况下，引发except的原始异常会作为异常<code>上下文</code>储存起来，并会显示在最终的错误消息中。<br>栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    1/0</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    raise ValueError(&quot;捕捉除零异常的时候再次引发了我...&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-567cc111f29679a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>可以看到，原始异常和引发的异常都显示到了最终的消息当中。<br>可以通过<strong>raise…from…</strong>提供自己的上下文，也可以用None禁用上下文。<br>栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    1/0</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    raise ValueError(&quot;捕捉除零异常的时候再次引发了我...&quot;) from ValueError</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-90075dddf1a02419.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    1/0</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    raise ValueError(&quot;捕捉除零异常的时候再次引发了我...&quot;) from None</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-b929b2889ebc67f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<hr>
-## 8.3.2 多个Except字句
-
-<p>在8.3节下的示例中，只捕获了除零异常，如果用户输入了非数字，会引发TypeError，使程序发生错误终止，因此可以这样写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">    y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">    print(x/y)</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    print(&quot;分母不能为0！&quot;)</span><br><span class="line">except TpyeError:</span><br><span class="line">    print(&quot;必须输入数字！&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以处理多个异常情况。相比频繁使用if，利用异常机制可以使代码更整洁。</p>
-<hr>
-## 8.3.3 一箭双雕
-
-<p>可以用括号把想要捕捉的异常写进一个元组，这样就不用频繁地去写except子句了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">    y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">    print(x/y)</span><br><span class="line">except (ZeroDivisionError, TypeError, NameError):</span><br><span class="line">    print(&quot;输入错误！&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>当然，缺点是每种错误都会打印同一种信息。</p>
-<hr>
-## 8.3.4 捕获对象
-
-<p>为了弥补上面的缺陷，可以显式的捕捉异常，然后打印此类异常的相关信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">    y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">    print(x/y)</span><br><span class="line">except (ZeroDivisionError, TypeError, NameError) as e:</span><br><span class="line">    print(e)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="8-3-5-一网打尽"><a href="#8-3-5-一网打尽" class="headerlink" title="8.3.5 一网打尽"></a>8.3.5 一网打尽</h2><p>不指定异常类，就会捕捉所有的错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">    y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">    print(x/y)</span><br><span class="line">except:</span><br><span class="line">    print(&quot;出现了一些错误&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="这样做并不能知道发生了什么错误，最好还是显式捕捉错误Exception-as-e然后打印之。"><a href="#这样做并不能知道发生了什么错误，最好还是显式捕捉错误Exception-as-e然后打印之。" class="headerlink" title="这样做并不能知道发生了什么错误，最好还是显式捕捉错误Exception as e然后打印之。"></a>这样做并不能知道发生了什么错误，最好还是显式捕捉错误Exception as e然后打印之。</h2><h2 id="8-3-6-万事大吉时"><a href="#8-3-6-万事大吉时" class="headerlink" title="8.3.6 万事大吉时"></a>8.3.6 万事大吉时</h2><p>可以添加<code>else</code>语句，如果程序正常运行，那么<code>else</code>中的语句就会被执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    print(&quot;正在执行...&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(e)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;执行顺利！&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-8047c101782877e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>利用else语句可以对上面的程序进行改良，如果用户输入有误，会让用户重复输入，直到对了为止：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        x = int(input(&quot;请输入分子：&quot;))</span><br><span class="line">        y = int(input(&quot;请输入分母：&quot;))</span><br><span class="line">        print(x / y)</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(e)</span><br><span class="line">    else:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
-
-<p>运行：<img src="https://upload-images.jianshu.io/upload_images/17108100-efdfad36afb050a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="敲代码的时候犯了一个错误，写成了While-True-，不应该加括号。"><a href="#敲代码的时候犯了一个错误，写成了While-True-，不应该加括号。" class="headerlink" title="敲代码的时候犯了一个错误，写成了While(True)，不应该加括号。"></a>敲代码的时候犯了一个错误，写成了While(True)，不应该加括号。</h2><h2 id="8-3-7-最后"><a href="#8-3-7-最后" class="headerlink" title="8.3.7 最后"></a>8.3.7 最后</h2><p>还有<strong>finally</strong>子句，可用于在发生异常时执行清理工作，这个子句通常是与try配套的，无论try中发生什么异常，<strong>最终都会执行</strong>finally子句。<br>书中的栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = None</span><br><span class="line">try:</span><br><span class="line">    x = 1/0</span><br><span class="line">finally:</span><br><span class="line">    print(&quot;正在执行finally&quot;)</span><br><span class="line">    del x</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-9b92d7d5e74caba2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>为什么要初始化x为None呢，因为在执行1/0时，由于发生了异常，值不会赋给x，而x又没有初始化，所以在del x时又会引发新的异常。<br>可以把<code>try</code>、<code>except</code>、<code>else</code>、<code>finally</code>结合使用。</p>
-<hr>
-<h1 id="8-4-异常和函数"><a href="#8-4-异常和函数" class="headerlink" title="8.4 异常和函数"></a>8.4 异常和函数</h1><p>函数中的异常会一层一层向上传递（到调用它的地方），如果都没有被处理，程序就会终止并打印TraceBack（栈追踪）信息。<br>栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def faulty():</span><br><span class="line">    raise Exception(&quot;Something is wrong...&quot;)</span><br><span class="line">def no_handle():</span><br><span class="line">    faulty()</span><br><span class="line">def handle_exception():</span><br><span class="line">    try:</span><br><span class="line">        faulty()</span><br><span class="line">    except:</span><br><span class="line">        print(&quot;Exception handled&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>运行no_handle():</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no_handle()</span><br></pre></td></tr></table></figure>
-
-<p>结果：<img src="https://upload-images.jianshu.io/upload_images/17108100-efbfac1a084606e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>运行handle_exception():</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">handle_exception()</span><br></pre></td></tr></table></figure>
-
-<p>结果：<img src="https://upload-images.jianshu.io/upload_images/17108100-be403cc86f1f5c89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>并不会打印栈追踪信息，而是执行except子句。<br>自己瞎折腾：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def faulty():</span><br><span class="line">    raise Exception(&quot;Something is wrong...&quot;)</span><br><span class="line">def no_handle():</span><br><span class="line">    try:</span><br><span class="line">        faulty()</span><br><span class="line">        print(&quot;555&quot;)</span><br><span class="line">    except:</span><br><span class="line">        print(&quot;666&quot;)</span><br><span class="line">def handle_exception():</span><br><span class="line">    try:</span><br><span class="line">        no_handle()</span><br><span class="line">        print(&quot;777&quot;)</span><br><span class="line">    except:</span><br><span class="line">        print(&quot;888&quot;)</span><br><span class="line">handle_exception()</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-21d9d6f78cafea81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<ul>
-<li>可以看出来，异常如果在某一层被捕捉，就不会再向上传递，所以打印出了666，而非888；</li>
-<li>在try中如果出现了错误，那么try中剩下的代码就不会再执行，所以没有打印555；</li>
-<li>在try中调用函数，如果被调用的函数中出现了异常但是已经在函数内部捕捉到，那么就不会向上传递，因此try依然会被执行下去，所以打印777.<hr>
-# 8.5 异常之禅
-两段代码：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def describe_person(person):</span><br><span class="line">    print(&apos;Description of&apos;, person[&apos;name&apos;])</span><br><span class="line">    print(&apos;Age:&apos;, person[&apos;age&apos;])</span><br><span class="line">    if &apos;occupation&apos; in person:</span><br><span class="line">       print(&apos;Occupation:&apos;, person[&apos;occupation&apos;])</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>输出：<img src="https://upload-images.jianshu.io/upload_images/17108100-1dcf2d29dedf28c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def describe_person(person):</span><br><span class="line">    print(&apos;Description of&apos;, person[&apos;name&apos;])</span><br><span class="line">    print(&apos;Age:&apos;, person[&apos;age&apos;])</span><br><span class="line">    try:</span><br><span class="line">        print(&apos;Occupation:&apos;, person[&apos;occupation&apos;]) </span><br><span class="line">    except KeyError: pass</span><br></pre></td></tr></table></figure>
-
-<p>输出：<img src="https://upload-images.jianshu.io/upload_images/17108100-30dbfd2a7cec18ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>其中的person是一个字典，里面有姓名、年龄，可能有职业。<br>第二中代码效率更高些（高一点点），因为少筛查了一边occupation。<br>主要就是讲，要养成使用try/except的习惯，这样有时候会比使用其它的方法更加简洁高效。</p>
-<hr>
-# 8.6 不那么异常的情况
-使用warn()引发一条警告，程序 不会被终止：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from warnings import warn</span><br><span class="line">warn(&quot;This is just a warning&quot;)</span><br><span class="line">print(&quot;go&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<img src="https://upload-images.jianshu.io/upload_images/17108100-3e45a8bf654e7390.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>可以使用警告过滤filterwarnings()来忽略掉警告，或者将警告升高到异常。<br>比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from warnings import filterwarnings</span><br><span class="line">filterwarnings(&quot;ignore&quot;)</span><br><span class="line">warn(&quot;I will be ignored&quot;)</span><br><span class="line">filterwarnings(&quot;error&quot;)</span><br><span class="line">warn(&quot;I won`t be ignored&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<img src="https://upload-images.jianshu.io/upload_images/17108100-608d8081f0788fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>警告也有类型，但都是Warning的子类，而Warning又是Exception的子类。发出或者过滤警告时可以指定类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filterwarnings(&quot;default&quot;, category=DeprecationWarning)</span><br><span class="line">warn(&quot;This Function is really old....&quot;, DeprecationWarning)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-55491c9fb368916d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filterwarnings(&quot;ignore&quot;, category=DeprecationWarning)</span><br><span class="line">warn(&quot;This Function is really old....&quot;, DeprecationWarning)</span><br><span class="line">warn(&quot;I am not a DeprecationWarning...&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：<br><img src="https://upload-images.jianshu.io/upload_images/17108100-a6557f924fa1c981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>关于warnings，更详细的内容请见<a href="https://docs.python.org/3.7/library/warnings.html#" target="_blank" rel="noopener">Python文档</a></p>
-<hr>
-# 8.7 小结
-
-<ol>
-<li>异常对象：异常情况使用异常对象表示的，对于异常情况，有多种处理方式；如果忽略，将导致程序终止。</li>
-<li>引发异常：使用raise来引发异常。可指定参数来重新引发新的异常，如果没有指定参数，将重新引发该子句捕捉的异常。</li>
-<li>自定义异常类：可以通过Exception派生创建自定义异常类。</li>
-<li>捕获异常：使用except来捕获异常。如果没有要捕获的类，将捕获所有异常。可以指定多个异常类，方法是把它们放在元组中。在同一个try/except中，可以包含多个except子句。</li>
-<li>else： try没有引发异常时执行else中的子句。</li>
-<li>finally：无论是否引发异常都将会执行。</li>
-<li>异常和函数：在函数中引发异常时，异常会传播到调用它的函数。</li>
-<li>警告：警告类似于异常，但（通常）只打印一条错误消息。你可以指定错误类别，它们是warning的子类。</li>
-</ol>
-<hr>
+ 
 
 
           
