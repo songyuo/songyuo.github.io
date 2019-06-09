@@ -27,7 +27,7 @@ and *如果有大佬不小心看到了发现了错误，就欢迎指正*
  __doc_ _是函数的一个属性，可用它来访问函数的文档字符串
 我自己的练习：
 
-```
+```python
 def lalala(x):
     """就瞎写的"""
     print(x)
@@ -39,7 +39,7 @@ print(lalala.__doc__)
 这里书上说用单引号，但是pycharm中会有提示，要让用连续的三个双引号
 help()函数可访问有关函数的信息，其中会包含函数的文档字符串
 
-```
+```python
 In [1]: help(round)
 Help on built-in function round in module builtins:
 
@@ -60,28 +60,28 @@ round(...)
 如果不想让可变参数的值在调用函数后发生变化，可以向函数中传递切片或者用copy()传递副本（如果有copy()的话）
 自己的练习：
 
-```
+```python
 def change(n):
     n[0] = 'a'
 
 
 x = [1, 2, 3]
 ```
-```
+```python
 change(x)
 print(x)
 ```
 结果;
 ![](17108100-4c15f297e1019ed1.png)
 
-```
+```python
 change(x[:])
 print(x)
 ```
 结果：
 ![](17108100-06682b1d3f3a17d1.png)
 
-```
+```python
 change(x.copy())
 print(x)
 ```
@@ -99,7 +99,7 @@ print(x)
 **位置参数不可定义在关键字参数后面！**
 关键字好像只能是字符串，我的试验：
 
-```
+```python
 def test(*a, **b):
     print(a, b)
 
@@ -127,7 +127,7 @@ test(1, **b)
 - 作用域嵌套，可在函数中再定义函数，并用return返回这个函数
 
 **在函数中访问全局变量：**
-```
+```python
 # 在函数中访问全局变量
 y = '全局'
 def test(x):
@@ -138,7 +138,7 @@ test('局部')
 **PS：做作业时发现np.array不用gobal关联也会变化，于是猜测，可变变量似乎不用关联也会变化**
 
 **如果局部变量与全局变量重名：**
-```
+```python
 # 如果局部变量与全局变量重名
 y = '全局'
 def test(y):
@@ -147,7 +147,7 @@ test('局部')
 ```
 结果同上
 **重新关联全局变量:**
-```
+```python
 # 重新关联全局变量
 y = '全局'
 def test():
@@ -158,7 +158,7 @@ print(y)
 ```
 结果：![重新关联全局变量](17108100-a52362afc531f6e6.png)
 **关于作用域嵌套：**
-```
+```python
 In [2]: def first(x):
    ...:     def second(y):
    ...:         return y**x
@@ -173,7 +173,7 @@ Out[2]: 4
 - 主要说了map，filter，reduce，lambda
 - 在较新的python版本中，可以用列表推导代替map和filter
 - map:对列表中所有元素执行函数
-```
+```python
 In [3]: list(map(str,range(10)))
 Out[3]: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
@@ -183,7 +183,7 @@ In [5]: [str(i) for i in range(10)]
 Out[5]: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 ```
 - filter: 对序列中元素执行函数，若为结果真，把它添加到最终要返回的列表中
-```
+```python
 In [6]: def  fun(x):
    ...:     return x.isalnum()
    ...: list(filter(fun,['fdas','fdsa3','1*&']))
@@ -191,7 +191,7 @@ Out[6]: ['fdas', 'fdsa3']
 # 与[x for x in [....] if x.isalnum] 等价
 ```
 - reduce: 这个还是看例子
-```
+```python
 In [1]: from functools import reduce
 In [2]: reduce(lambda x,y: x+y, [1,2,3,4,5,6,7,8,9])
 Out[2]: 45 

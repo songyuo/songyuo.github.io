@@ -5,7 +5,8 @@
 # Set to true, if you want to fully override the default configuration.
 # Useful if you don't want to inherit the theme _config.yml configurations.
 override: false
-
+# 启用更新日期
+display_updated: true
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
   enable: true
