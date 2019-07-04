@@ -3,9 +3,9 @@ title: Python基础教程（第三版）（六）抽象
 date: 2019-06-07 21:55:05
 tags:
 - 学习笔记
-- python基础教程(第三版)
+- python基础
 categories:
-- 语言基础
+- 理论基础
 ---
 
 *一个菜鸡的挣扎*
