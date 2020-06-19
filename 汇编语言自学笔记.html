@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="满纸荒唐言，一把辛酸泪">
+<meta property="og:type" content="website">
+<meta property="og:title" content="不知所云">
+<meta property="og:url" content="http://yoursite.com/训练日志.html">
+<meta property="og:site_name" content="不知所云">
+<meta property="og:description" content="满纸荒唐言，一把辛酸泪">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-16T07:33:02.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不知所云">
+<meta name="twitter:description" content="满纸荒唐言，一把辛酸泪">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'songyuo'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/训练日志.html">
+
+
+
+
+
+
+
+  <title>汇编语言自学笔记 | 不知所云</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不知所云</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学如逆水行舟，不进则退</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">汇编语言自学笔记</h1>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p>记录一下学习过程，以后遗忘了也方便复习。<br>学习方法：<a href="https://www.bilibili.com/video/av34455803" target="_blank" rel="noopener">b站视频</a> + 汇编语言教材（王爽第3版），视频中用到的工具在 <a href="https://pan.baidu.com/s/1EfNaQOxSYfYg8V5KZFQahw" target="_blank" rel="noopener">百度网盘</a> (提取码: 7evz)中。</p>
+<hr>
+<h1 id="预备"><a href="#预备" class="headerlink" title="预备"></a>预备</h1><h2 id="1-相关软件的安装"><a href="#1-相关软件的安装" class="headerlink" title="1  相关软件的安装"></a>1  相关软件的安装</h2><p>主要是用到了DOSbox和Vim，工具都在网盘中。<br><strong>配置DOSbox</strong></p>
+<ol>
+<li>在D盘中新建一个asm的文件夹，以后在这个文件夹中建立文件练习；</li>
+<li>将网盘中的debug.exe放在asm文件夹下；</li>
+<li>运行DOSbox安装程序（在网盘中），一直next即可；</li>
+<li>找到安装目录C:\Users\Administrator\AppData\Local\DOSBox，编辑配置文件，在最下面添加mount c: d:\asm  和 c:，如下图；这样每次开启软件就可以自动运行命令进入目录，不用手动输入了； </li>
+<li>运行DOSbox，键入debug，再键入d，就可以使用了。</li>
+</ol>
+<p><img src="/img/17108100-3fe1d1dfc3e6561d.png" alt></p>
+<p><strong>配置Vim</strong></p>
+<ol>
+<li>安装Vim，一直next就好；</li>
+<li>找到安装目录，C:\Program Files (x86)\Vim，编辑配置文件，加入<blockquote>
+<p>color evening<br>set nu</p>
+</blockquote>
+</li>
+</ol>
+<p>调成黑色背景并显示行号。<br><strong>编译小练习</strong></p>
+<ol>
+<li>将网盘中的LINK.exe，MASM.exe，temp.txt，temp1.txt拷贝至asm文件夹内，并新建t1.asm把temp.txt中的内容复制进去；</li>
+<li><p>进入DOSbox配置文件，在底部加入</p>
+<blockquote>
+<p>masm t1;<br>link t1;</p>
+</blockquote>
+</li>
+<li><p>打开DOSbox，即可自动完成编译和连接，asm文件夹内会出出现t1.obj和t1.exe;</p>
+</li>
+<li>在DOSbox中键入t1，发现屏幕中出现紫色小区域，表示exe运行成功。</li>
+</ol>
+<p><img src="/img/17108100-cda2990655ee2626.png" alt></p>
+<p><hr></p>
+<h2 id="2-关于编码"><a href="#2-关于编码" class="headerlink" title="2  关于编码"></a>2  关于编码</h2><p><strong>编码是人类表示世界的方式</strong><br>希腊人是如何用地图表示世界地理位置的？<br>用纬度和经度表示。<br>人类是如何表示长度的？<br>有各种单位，如米、厘米、英寸…….<br>人类是如何表示时间的?<br>年、月、日、时、分、秒…….<br>人类是如何表示天上的星星的？<br>有各种星座，金牛座、处女座、猎户座，即用图形表示星星之间的相对位置。<br>以上各种，都是一种编码系统，都是人类对世界的表示。</p>
+<p>又如我们是如何表示我们说话时所发出的声波的？拼音字母a、o、e就是对我们发出的声波的一种表示，对于英语来讲，英语是由音节组成并与读音相对应，也是一种对人类发出声波的一种编码。<br>再一个例子，笛卡尔坐标系，本质上也是一套编码/表示系统，用于表示坐标系中的任意一点。<br><strong>世界与计算与计算要素</strong><br>人类为了观测世界，用编码对世界进行表示，用数学对世界进行描述（计算），<br>即 找到计算要素→对计算要素进行表示→计算<br>一个简单的例子：<br>问：你给了我一个苹果，然后又给了我两个苹果，请问我得到了几个苹果？<br>解：①找到其中的计算要素：一个苹果、两个苹果；②用逻辑符号表示计算要素之间的关系；③进行计算，即1+2=3。<br>总结一下，就是用逻辑表示系统，将计算要素与计算要素之间的逻辑关系表示出来进行计算，所有的学科皆是如此。<br>那就有人问了，你说所有的学科皆是如此，那历史呢，历史也需要这个样吗？<br>这就要拓宽对<code>计算</code>的理解：举一个历史中的例子，比如说一场战役，双方需要把天气、地形以及敌军情况这些计算要素找出来，然后据此制定作战计划进行计算。再比如说心理测试，就是通过收集计算要素，再用计算推断出受测者的心理状态。<br><code>这一切都是可以计算的。</code><br><strong>计算要素与表示系统</strong><br>还是上面的苹果例子。解决这个问题我们可以用阿拉伯数字，也可以用算盘，甚至可以结绳计数，当然效率是有差别的，即<code>一套好的表示系统，可以更好的表示出计算要素以及计算要素与计算要素之间的逻辑关系。</code><br><strong>计算机编程语言是一套什么系统？</strong><br>答案很明显，是一套表示系统。<br>英语是一种语言，汉语也是一种语言，语言是用来互相交流的，我们之间正是由于采用了同一套表示/编码系统，才能理解彼此的意思。<br>计算机编程语言也是用来人与计算机相互交流的。<br>python、java、c++是高级编程语言，而汇编语言是低级编程语言。</p>
+<p>汇编语言虽然使用不便，但是它提供了一种观测手段，可以观测到很多高级语言无法观测到的东西。             </p>
+<p><hr></p>
+<h2 id="3-二进制、十进制与十六进制"><a href="#3-二进制、十进制与十六进制" class="headerlink" title="3  二进制、十进制与十六进制"></a>3  二进制、十进制与十六进制</h2><p>这个就记录几个要点。<br>二进制由一和零组成，1代表有，0代表无。<br>二进制与十进制的快速转换：比如十进制数35，可以拆成32+2+1，把相应的二进数位变为1，得到二进制数10011。<br>十六进制与十进制快速转换：比如十进制数83可以表示为16×5 + 3，表示成十六进制为53H（H是后缀，表示该数为十六进制hex），注意在十六进制中，1有0无规则失效。<br>十六进制与二进制快速转换：用4位二进制代表一位十六进制即可，比如2A，2用二进制表示就是0010，A用二进制表示就是1010，所以2A用二进制表示为00101010。</p>
+<p>为什么4个二进制位可以表示一个16进制？</p>
+<p>个人理解：对于二进制，每左移一位可以视作值乘以2，左移4位就代表乘以16，所以00101010中的0010就代表它本身的值2乘以16，也就相当于16进制的第二位。之后的依此类推。</p>
+<p><strong>反过来思考</strong><br>4位二进制数最高表示15，即1111。根据1有0无的规则，转换时剪掉0所对应的数就能得到十进制数。比如，1101，代表第二位缺失，那它就表示15-2=13</p>
+<p><hr></p>
+<h1 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h1><p>仅记录一些要点<br><strong>汇编语言由什么组成？</strong></p>
+<ul>
+<li>汇编指令</li>
+<li>伪指令：帮助编译器把汇编语言翻译成机器语言，伪指令自身并不被翻译，它没有对应的机器码</li>
+<li>其它符号：如+、-、*、/等，也没有对应的机器码</li>
+</ul>
+<p><strong>DOSBOX的一些指令</strong><br>-debug -u -d<br>u指令和d指令的解释不同，u指令我们看到的是机器指令和汇编指令，d指令我们看到是数据。</p>
+<p><strong>总线</strong></p>
+<ul>
+<li>地址总线：决定cpu的寻址能力；如果一个cpu有N个地址线，则可以说这个cpu的地址总线的宽度为N。这样的cpu最多可以寻找2的N次方个内存单元。这里的内存单元应该指的是一个字节，即8个二进制位。</li>
+<li>数据总线：决定cpu和其它部件进行数据传送时一次性能够传送多少字节的能力，8根数据总线一次可传送8位二进制数（一个字节），16根数据总线一次性可传送两个字节。</li>
+<li>控制总线：决定了cpu对其他部件的控制能力。</li>
+</ul>
+<p><strong>检测点1.1</strong><br>（1）一个CPU的寻址能力为8KB，那么它的地址总线的宽度为<strong><strong><strong><strong>__</strong></strong></strong></strong>:</p>
+<p>$ 8KB=2^{3}\times 2^{10}B=2^{13}B $，所以地址总线宽度为13。</p>
+<p>其余略。<br><strong>接口</strong></p>
+<p>RAM：允许读写，断电清空；ROM：只需读取，断电不清空。</p>
+<p>每一台PC都有一个主板，上面有核心器件和主要器件，这些器件通过总线相连。这些器件有cpu、存储器、外围芯片组、扩展插槽等。扩展插槽上一般都有RAM内存条和各类接口卡。</p>
+<p>计算机系统中，所有可用程序控制其工作的设备，必须受到cpu的控制。cpu对外部设备不能控制，如显示器、打印机、音响等。直接控制这些设备的是插在扩展插槽上的接口卡，cpu通过接口卡间接控制这些设备。<br><strong>存储器芯片</strong> </p>
+<ul>
+<li><p>随机存储器，用于存放供cpu使用的绝大部分程序和数据。主要由装在主板上的RAM和插在扩展插槽上的RAM组成。</p>
+</li>
+<li><p>装有BIOS（Basic Input/Outpu System 基本输入输出系统）的ROM。</p>
+<p>BIOS是由主板和各类接口卡厂商提供的软件系统，可以通过它进行基本的输入输出。主板的ROM上存放着主板的BIOS（又称为系统BIOS），显卡的ROM上存放着显卡的BIOS等等。</p>
+</li>
+<li><p>接口卡上的RAM：对输入输出的数据进行临时存储。</p>
+</li>
+</ul>
+<p><img src="/img/微信截图_20190625154442.png" alt><br><strong>内存地址空间</strong> </p>
+<p>对cpu来讲，系统中的所有存储器中的存储单元都处于一个统一的一个逻辑存储器中，它的容量受到cpu寻址能力的限制。这个逻辑存储器即是我们所说的内存地址空间。</p>
+<p><img src="/img/微信截图_20190625154839.png" alt></p>
+<p><hr></p>
+<h1 id="第二章-寄存器"><a href="#第二章-寄存器" class="headerlink" title="第二章 寄存器"></a>第二章 寄存器</h1><p>主要研究对象是8086CPU，共有14个寄存器，都是16位，存放两个字节</p>
+<h2 id="2-1-通用寄存器"><a href="#2-1-通用寄存器" class="headerlink" title="2.1 通用寄存器"></a>2.1 通用寄存器</h2><p>AX、BX、CX、DX用来存放一般性数据，故称为通用寄存器</p>
+<p>为了兼容，这4个寄存器都可以分为两个独立的8位寄存器使用</p>
+<p>AX = AH + AL    BX = BH + BL      CX = CH + CL       DX = DH + DL</p>
+<h2 id="2-2-字在寄存器中的存储"><a href="#2-2-字在寄存器中的存储" class="headerlink" title="2.2 字在寄存器中的存储"></a>2.2 字在寄存器中的存储</h2><p>8086CPU可以一次性处理两种尺寸数据：8位的字节byte和16位的字word</p>
+<h2 id="2-3-几条汇编指令"><a href="#2-3-几条汇编指令" class="headerlink" title="2.3 几条汇编指令"></a>2.3 几条汇编指令</h2><p>明白mov、add的作用</p>
+<p>运算结果超过寄存器存储的上限后，最高位不会保存在寄存器（保存到了其它地方）中，可以用DOSBox进行实验：</p>
+<ol>
+<li>进入debug模式</li>
+<li>按a， 输入指令</li>
+<li>按t， 执行指令</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>DOSBox识别16进制数据</li>
+<li>DOSBox会自动把输入的数据补全到与寄存器对应的位数，如果输入的数据超过了寄存器的位数则报错</li>
+<li>使用寄存器进行mov、add时，位数必须一致</li>
+<li>采用通用寄存器的8位寄存器进行运算时，它本身与16位寄存器是独立的，例如使用AL运算超过了上限，进位的数据不会保存在AH中</li>
+</ol>
+<p><strong>检测点2.1</strong></p>
+<p>第一题仔细算就好，但是要看清题目，否则很容易出错</p>
+<p>第二题思路，把2mov到一个寄存器中，然后add自身3次</p>
+<h2 id="2-4-物理地址"><a href="#2-4-物理地址" class="headerlink" title="2.4 物理地址"></a>2.4 物理地址</h2><p>所有的内存单元构成的存储空间是一个一维的线性空间，每一个内存单元都有一个唯一的地址，称为物理地址</p>
+<h2 id="2-5-16位结构CPU"><a href="#2-5-16位结构CPU" class="headerlink" title="2.5 16位结构CPU"></a>2.5 16位结构CPU</h2><ul>
+<li>运算器一次最多可以处理16位数据</li>
+<li>寄存器的最大宽度位16位</li>
+<li>寄存器和运算器之间的通路为16位</li>
+</ul>
+<h2 id="2-6-8086CPU是如何给出物理地址的？"><a href="#2-6-8086CPU是如何给出物理地址的？" class="headerlink" title="2.6 8086CPU是如何给出物理地址的？"></a>2.6 8086CPU是如何给出物理地址的？</h2><p>8086CPU有20位地址总线，寻址能理为1MB，但是一次只能传输16位数据，那怎么办呢？</p>
+<p>方法是采用两个16位地址合成20位地址，一个是段地址，另一个是偏移地址，于是物理地址就等于段地址×16+偏移地址，乘16位就相当于2进制左移四位，就可以达到20位了</p>
+<h2 id="2-7-段地址×16-偏移地址-物理地址的本质含义"><a href="#2-7-段地址×16-偏移地址-物理地址的本质含义" class="headerlink" title="2.7 段地址×16+偏移地址=物理地址的本质含义"></a>2.7 段地址×16+偏移地址=物理地址的本质含义</h2><p>就是学校、体育馆、图书馆的那个例子</p>
+<h2 id="2-8-段的含义是什么？"><a href="#2-8-段的含义是什么？" class="headerlink" title="2.8 段的含义是什么？"></a>2.8 段的含义是什么？</h2><p>段只是一个概念，实际内存并没有真正分段</p>
+<p>一个段的起始地址是段地址×16，因此必然是16的倍数</p>
+<p>偏移地址最大值为FFFFH，因此一个段的最大长度为64KB</p>
+<p>一个物理地址可以用多个段地址×16+偏移地址的形式表示</p>
+<h2 id="2-9-哪些是段寄存器？"><a href="#2-9-哪些是段寄存器？" class="headerlink" title="2.9 哪些是段寄存器？"></a>2.9 哪些是段寄存器？</h2><p>用于储存段地址：CS、DS、SS、ES</p>
+<h2 id="2-10-CS和IP"><a href="#2-10-CS和IP" class="headerlink" title="2.10 CS和IP"></a>2.10 CS和IP</h2><p>内存中保存的都是二进制数据，那么计算机怎么区分哪个是指令，哪个是数据呢？</p>
+<p>方法是把CS:IP指向的内容当作指令</p>
+<p>总的流程是：</p>
+<ol>
+<li>从CS:IP指向的内存单元中读取指令，读取的指令进入指令缓冲器</li>
+<li>IP=IP+读取指令的长度，从而指向下一条指令</li>
+<li>执行指令，转向1</li>
+</ol>
+<h2 id="2-11-如何修改CS、IP中的指令？"><a href="#2-11-如何修改CS、IP中的指令？" class="headerlink" title="2.11 如何修改CS、IP中的指令？"></a>2.11 如何修改CS、IP中的指令？</h2><p>采用jmp</p>
+<p>例如 jmp 2AE3:3，执行后CS中就是2AE3H，IP中就是0003H </p>
+<p>或者jmp ax，执行后，IP中的值就等于ax中的值</p>
+<h2 id="2-12-代码段"><a href="#2-12-代码段" class="headerlink" title="2.12 代码段"></a>2.12 代码段</h2><p>我们可以把长度小于64KB的一段代码放置在起始地址为16的倍数、连续的内存单元中，然后可以将其视作为一个代码段，然后用jmp指令让CS:IP指向代码的首地址即可。</p>
+<p>为什么长度要小于64KB呢？<br>个人理解：IP执行完指令后会自动增加，最多是64KB，但是CS好像不会自动增加</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDYyNC8yMTE1Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/20190608153912.jpg" alt="songyuo">
+            
+              <p class="site-author-name" itemprop="name">songyuo</p>
+              <p class="site-description motion-element" itemprop="description">满纸荒唐言，一把辛酸泪</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#预备"><span class="nav-text">预备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-相关软件的安装"><span class="nav-text">1  相关软件的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-关于编码"><span class="nav-text">2  关于编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-二进制、十进制与十六进制"><span class="nav-text">3  二进制、十进制与十六进制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-基础知识"><span class="nav-text">第一章 基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-寄存器"><span class="nav-text">第二章 寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-通用寄存器"><span class="nav-text">2.1 通用寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-字在寄存器中的存储"><span class="nav-text">2.2 字在寄存器中的存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-几条汇编指令"><span class="nav-text">2.3 几条汇编指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-物理地址"><span class="nav-text">2.4 物理地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-16位结构CPU"><span class="nav-text">2.5 16位结构CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-8086CPU是如何给出物理地址的？"><span class="nav-text">2.6 8086CPU是如何给出物理地址的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-段地址×16-偏移地址-物理地址的本质含义"><span class="nav-text">2.7 段地址×16+偏移地址=物理地址的本质含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-段的含义是什么？"><span class="nav-text">2.8 段的含义是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-哪些是段寄存器？"><span class="nav-text">2.9 哪些是段寄存器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-CS和IP"><span class="nav-text">2.10 CS和IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-如何修改CS、IP中的指令？"><span class="nav-text">2.11 如何修改CS、IP中的指令？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-代码段"><span class="nav-text">2.12 代码段</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">songyuo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

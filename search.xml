@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>java小记</title>
+      <link href="/2019/11/18/java%E5%B0%8F%E8%AE%B0/"/>
+      <url>/2019/11/18/java%E5%B0%8F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leecode</title>
+      <link href="/2019/11/18/leecode/"/>
+      <url>/2019/11/18/leecode/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数学之美笔记</title>
+      <link href="/2019/09/21/%E6%95%B0%E5%AD%A6%E4%B9%8B%E7%BE%8E%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/09/21/%E6%95%B0%E5%AD%A6%E4%B9%8B%E7%BE%8E%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>我会将简单即是美的思想贯穿全书            —吴军</p><p><strong>第1章 文字和语言vs数字和信息</strong></p><p>人们记不住太多的文字，于是产生了文字的聚类，同时带来了歧义性。</p><p>消除歧义性通用的办法就是根据上下文推测，但是也有做不到的时候，就如同今天即使一个再好的概率模型消除歧义时也有失灵的时候，这也是语言从产生时就固有的特点</p><p>不同的文化产生了不同的文字，这就有了翻译的需求。</p><p>不同的文字系统在记录信息的能力上是等价的，这是翻译能够达成的基础。</p><p>文字只是信息的载体，而非信息本身，因此数字也可以成为信息的载体</p><p>人类的祖先最开始用手指计数，这也许是我们用十进制的原因，但是玛雅人使用20进制（我为什么要记这种东西），这是玛雅文明发展缓慢的原因之一。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 读书笔记 </tag>
+            
+            <tag> NLP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python实例变量与类变量</title>
+      <link href="/2019/09/16/python%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E7%B1%BB%E5%8F%98%E9%87%8F/"/>
+      <url>/2019/09/16/python%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E7%B1%BB%E5%8F%98%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<p>简单记一下：</p><ul><li>类变量绑定到类，实例变量绑定到具体实例</li><li>类变量在类中的函数体外定义，实例变量一般在__init__()中用self定义，但是似乎也可以定义在__init__()之外的函数体中</li><li>类变量可以通过类名来访问，也可以通过实例来访问，实例变量只能通过具体实例访问</li><li>存疑：如果类变量在具体实例中重新赋值（在类中或者类外），那么就会产生一个同名的实例变量绑定到该实例，类变量仍然不变</li><li>存疑：如果实例通过调用类变量改变它的值而不是对其重新赋值，那么类变量就会发生改变</li></ul><h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>:</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    b = <span class="number">1</span></span><br><span class="line">    c = [<span class="number">1</span>]</span><br><span class="line">    d = [<span class="number">1</span>]</span><br><span class="line">    e = <span class="string">'1,2,3'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.a = <span class="number">2</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    demo = Test()</span><br></pre></td></tr></table></figure><h2 id="1-在类的定义块中覆盖类变量："><a href="#1-在类的定义块中覆盖类变量：" class="headerlink" title="1. 在类的定义块中覆盖类变量："></a>1. 在类的定义块中覆盖类变量：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(Test.a)</span><br><span class="line">print(demo.a)</span><br><span class="line">demo.a = <span class="number">123</span></span><br><span class="line">print(Test.a)</span><br><span class="line">print(demo.a)</span><br><span class="line">Test.a = <span class="number">1234</span></span><br><span class="line">print(Test.a)</span><br><span class="line">print(demo.a)</span><br></pre></td></tr></table></figure><p>结果：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">123</span></span><br><span class="line"><span class="number">1234</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure><ul><li><p>用self定义重名变量后，会生成一个重名实例变量，通过实例变量访问会访问到重名实例变量，通过类才能访问到类变量</p></li><li><p>用具体实例重新赋值不改变类变量的值，用类重新赋值不改变具体实例中的值</p></li></ul><h2 id="2-在类的定义块之外覆盖类变量"><a href="#2-在类的定义块之外覆盖类变量" class="headerlink" title="2. 在类的定义块之外覆盖类变量"></a>2. 在类的定义块之外覆盖类变量</h2><p>覆盖不可变数据类型：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(Test.b)</span><br><span class="line">print(demo.b)</span><br><span class="line">demo.b = <span class="number">123</span></span><br><span class="line">print(Test.b)</span><br><span class="line">print(demo.b)</span><br></pre></td></tr></table></figure><p>结果：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure><p>覆盖可变数据类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">demo.c = 123</span><br><span class="line">print(Test.c)</span><br><span class="line">print(demo.c)</span><br></pre></td></tr></table></figure></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>]</span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure><h2 id="3-用实例调用类变量改变其值"><a href="#3-用实例调用类变量改变其值" class="headerlink" title="3. 用实例调用类变量改变其值"></a>3. 用实例调用类变量改变其值</h2><p>调用可变数据类型：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">demo.d.append(<span class="number">2</span>)</span><br><span class="line">print(Test.d)</span><br></pre></td></tr></table></figure><p>结果：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure><p>调用不可变数据类型：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">demo.e.split(<span class="string">','</span>)</span><br><span class="line">print(Test.e)</span><br></pre></td></tr></table></figure><p>结果：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br></pre></td></tr></table></figure><p>并没有变化</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于python</title>
+      <link href="/2019/08/02/%E5%85%B3%E4%BA%8Epython/"/>
+      <url>/2019/08/02/%E5%85%B3%E4%BA%8Epython/</url>
+      
+        <content type="html"><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><p>摘自《python核心编程》：</p><ul><li>进程指的是一个运行中的程序</li><li>线程与进程类似，不过它们都是在同一进程下执行的，并享有相同的上下文，可以认为它们是在一个“主进程”或者“主线程”下并行运行的一些“迷你进程”</li></ul><p>一个进程中的各个线程和主线程共享同一片数据空间，相比于独立的进程而言，线程间的信息共享和通信更加容易。</p><h2 id="Threading"><a href="#Threading" class="headerlink" title="Threading"></a>Threading</h2><ul><li>线程被设置为“守护线程”之后，进程退出时不需要等待线程执行完毕，进程退出后子线程仍然可以运行。</li><li>线程没有被设置为“守护线程”时，start之后代码会接着运行，但是执行完最后一行代码后会等待线程结束，然后脚本才会退出。</li><li>如果线程执行了join方法，那么join之后的代码不会运行直到线程执行完毕。</li></ul><p><strong>关于lock</strong></p><p>用Lock()实例化获得一个锁，可获得多个锁，每个锁互不干涉？</p><p>lock对象一旦被acquire之后，除非release，否则不能再被获取，如果在这种状态下再去acquire是acquire不到的，进程就会卡在acquire（）处，直到该锁被释放。</p><p>可以用with 语句包含需要的代码，程序会自动实现acquire和release方法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python进阶 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《JavaScript高级程序设计》笔记</title>
+      <link href="/2019/07/29/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/07/29/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>时间不够用了，那种记录得十分详细的笔记感觉并不是十分必要，所以打算换一下方法，只记录一下要点和纲领，具体的可以去书中找，十分重要的内容才进行详细记录。</p><p>最重要还是起到梳理复习的作用吧，估计这篇笔记我写完之后我自己都不想看….</p><p>之前看网上的资料，感觉学习一下javascript还是有点用的。不打算做前端，但是将来说不定就变注意了(￣▽￣)”。看懂js对于爬虫来说也是很有帮助的，所以学学学，艺多不压身。</p><h1 id="第1章-JavaScript简介"><a href="#第1章-JavaScript简介" class="headerlink" title="第1章 JavaScript简介"></a>第1章 JavaScript简介</h1><p>Javascript是一种专门为<font color="red">网页交互</font>而设计的语言，总体来说由三个部分组成：</p><ul><li>ECMAScript，有ECMA-262定义，提供核心语言功能；</li><li>文档对象模型（DOM），提供访问和操作网页内容的方法和接口；</li><li>浏览器对象模型（BOM），提供与浏览器交互的方法与接口。</li></ul><p>不同浏览器对Javascript的支持会有所差异。</p><h1 id="第2章-在HTML中使用JavaScript"><a href="#第2章-在HTML中使用JavaScript" class="headerlink" title="第2章 在HTML中使用JavaScript"></a>第2章 在HTML中使用JavaScript</h1><h2 id="2-1-元素"><a href="#2-1-元素" class="headerlink" title="2.1 \元素"></a>2.1 \<script>元素</h2><ul><li>script标签的6个属性，常用的是async、defer、src;</li><li>使用\<script>标签的方式有两种，一种是直接在页面中嵌入，另一种是通过src引入外部js文件；</li><li>在js代码中使用\<script>需要用反斜杠转义；</li><li>只要不存在async、defer属性，浏览器会按照顺序解析script代码</li></ul><h3 id="2-1-1-标签的位置"><a href="#2-1-1-标签的位置" class="headerlink" title="2.1.1 标签的位置"></a>2.1.1 标签的位置</h3><p>惯例是放在head中，但是由于这样js加载完成后才会出现页面内容，所以可以把js放在body中页面元素的后面，这样页面内容就会先显示出来。</p><h3 id="2-1-2-延迟脚本"><a href="#2-1-2-延迟脚本" class="headerlink" title="2.1.2 延迟脚本"></a>2.1.2 延迟脚本</h3><p>加入defer属性，即defer = “defer”，脚本会延迟到浏览器遇到\&lt;/head&gt;后才执行。但是由于多个延迟脚本顺序可能会发生混乱，所以要想延迟还是把脚本放在页面底部最好。</p><h3 id="2-1-3-异步脚本"><a href="#2-1-3-异步脚本" class="headerlink" title="2.1.3 异步脚本"></a>2.1.3 异步脚本</h3><p>脚本加载和页面加载会同时进行，但是异步脚本并不会按照先后顺序执行，所以要确保异步脚本之间不要相互依赖。用法：async  = “async”</p><h2 id="2-2-嵌入代码与外部文件"><a href="#2-2-嵌入代码与外部文件" class="headerlink" title="2.2 嵌入代码与外部文件"></a>2.2 嵌入代码与外部文件</h2></script></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>黑客与画家杂感</title>
+      <link href="/2019/07/04/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/"/>
+      <url>/2019/07/04/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/</url>
+      
+        <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">输入密码，查看文章。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="Enter the password." id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">Decrypt</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX1+ist2rqysZ9MLSnH9Y2aS6KzX/iN9A5ztl6pdIbQI48xFj/uQqAFOwBriDbzn8X2AH7RZh6AEp+g== </div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔杂感 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 读书笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaWeb学习笔记</title>
+      <link href="/2019/06/24/JavaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/06/24/JavaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://www.bilibili.com/video/av29086718" target="_blank" rel="noopener">视频教程</a>学习笔记</p><h1 id="第一节-jsp入门"><a href="#第一节-jsp入门" class="headerlink" title="第一节 jsp入门"></a>第一节 jsp入门</h1><h2 id="1-动态页面"><a href="#1-动态页面" class="headerlink" title="1 动态页面"></a>1 动态页面</h2><p>动态页面重点并不在于它是否有动感，而在于网页内容会不会随着时间、地点、用户操作而变化。动态页面需要使用到服务端脚本语言。</p><h2 id="2-架构"><a href="#2-架构" class="headerlink" title="2 架构"></a>2 架构</h2><h3 id="（1）CS架构"><a href="#（1）CS架构" class="headerlink" title="（1）CS架构"></a>（1）CS架构</h3><p>CS架构就是 Client -Server。</p><p><img src="img/微信截图_20190624171156.png" alt></p><p>上图就是一个cs架构。</p><p>CS架构的缺点：</p><ul><li>如果软件升级，那么全部客户端上的软件都需要升级</li><li>维护麻烦：需要维护每一台客户端软件</li><li>每一台客户端都需要安装软件</li></ul><h3 id="（2）BS架构"><a href="#（2）BS架构" class="headerlink" title="（2）BS架构"></a>（2）BS架构</h3><p>BS架构就是Browser-Server。</p><p><img src="img/微信截图_20190624172751.png" alt></p><p>BS架构只需要浏览器即可，维护也方便</p><p><strong>注意</strong>BS与JCS各有优势，BS并不是CS的替代品。CS的页面更加美观，响应速度也比较快。两者各有利弊。</p><h3 id="（3）关于jsp"><a href="#（3）关于jsp" class="headerlink" title="（3）关于jsp"></a>（3）关于jsp</h3><h4 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h4><p><strong>目录</strong>：</p><ul><li>bin中主要放可执行文件，比如startup.bat、shutdown.bat</li><li>conf 主要放配置文件</li><li>lib 存放tomcat依赖的jar包</li><li>log 日志文件</li><li>temp 临时文件</li><li>webapps 存放可执行的项目（把我们开发的项目放于此）</li><li>work 存放特殊的临时文件：主要是由jsp翻译成的java以及编译的class文件，jsp→java→class</li></ul><p>软件配置：要先配置jdk，再配置tomcat，具体略。</p><p><strong>访问tomcat</strong>：</p><p>要访问的项目都在webapps中，默认访问ROOT，如果要访问别的项目，在url后加斜杠跟项目名称。比如要访问example项目，可访问localhost:8888/example。</p><p>example的默认页面是index.html，若要修改默认项，需要修改WEB-INF中的web.xml中的welcome-file-list：</p><p><img src="img/微信截图_20190624174350.png" alt></p><p>如图，tomcat会依次检索上述文件，都找不到时，会报404错误。</p><p><strong>自己新建项目</strong>：</p><p>项目文件夹中必须要有WEB-INF以及其中的web.xml。同时WEB-INF中还可以有class文件夹存放class文件，lib文件夹存放依赖包。</p><h1 id="第二节-虚拟路径和虚拟主机"><a href="#第二节-虚拟路径和虚拟主机" class="headerlink" title="第二节 虚拟路径和虚拟主机"></a>第二节 虚拟路径和虚拟主机</h1><h2 id="1-虚拟路径"><a href="#1-虚拟路径" class="headerlink" title="1 虚拟路径"></a>1 虚拟路径</h2><p>指默认访问到webapps中的项目。可以修改虚拟路径指向别的文件夹。</p><p>修改方式：</p><p>（1）可以通过修改server.xml修改虚拟路径：</p><p><img src="/img/微信截图_20190624175941.png" alt></p><p>访问path就相当于访问docBase，其中path是相对于webapps的相对路径。</p><p>修改完成后需要重启。</p><p>（2）在conf/Catalina/localhost中新建项目名.xml文件，把上图中的context语句写入其中即可，此方式不需要重启。</p><h2 id="2-虚拟主机"><a href="#2-虚拟主机" class="headerlink" title="2 虚拟主机"></a>2 虚拟主机</h2><p>在server.xml新写Host语句:</p><p><img src="/img/微信截图_20190624181417.png" alt></p><p>其中path被写成了”/“，也就是说访问localhost时直接访问docBase项目。</p><p>修改defaultHost：</p><p><img src="/img/微信截图_20190624181611.png" alt></p><p>修改本机host文件，添加映射：</p><p><img src="/img/微信截图_20190624181858.png" alt></p><h1 id="第三节-jsp执行过程"><a href="#第三节-jsp执行过程" class="headerlink" title="第三节 jsp执行过程"></a>第三节 jsp执行过程</h1><p>第一次访问时：jsp→java→class，之后每次直接访问class，每当jsp文件内容改变时，需要重新执行翻译、编译过程。</p><h1 id="第五节JSP页面元素以及request对象"><a href="#第五节JSP页面元素以及request对象" class="headerlink" title="第五节JSP页面元素以及request对象"></a>第五节JSP页面元素以及request对象</h1><p>jsp三种注释形式：html（可通过源码看到）、java、jsp</p><p>9种内置对象（面试常考）：</p><ol><li><p>out：用于向客户端输出内容</p></li><li><p>request：请求对象，存储客户端向服务端发送的请求信息，常用request对象方法：</p><ul><li>String getParameter(String name): 根据请求的字段名key，返回字段值value</li><li>Srting[] getParameter（String name)：根据请求字段名key，返回多个字段值value</li><li>void setCharacterEncoding(“编码格式utf-8”)：设置请求编码</li><li>getRequestDispatcher(“b.jsp”).forward(request, response)：请求转发的方式跳转页面，A→B</li><li>ServletContext getServerContext(): 获取项目的ServletContext对象。</li></ul></li><li>response</li><li>pageContext</li><li>session</li><li>application</li><li>config</li><li>page</li><li>exception</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 实用技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> Web开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机组成学习笔记</title>
+      <link href="/2019/06/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/06/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 计算及组成 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python基础教程（九）魔法方法、特性和迭代器</title>
+      <link href="/2019/06/11/python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E4%B9%9D%EF%BC%89/"/>
+      <url>/2019/06/11/python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E4%B9%9D%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="9-1-如果你使用的不是Python3"><a href="#9-1-如果你使用的不是Python3" class="headerlink" title="9.1 如果你使用的不是Python3"></a>9.1 如果你使用的不是Python3</h1><p>这个略。</p><hr><h1 id="9-2-构造函数"><a href="#9-2-构造函数" class="headerlink" title="9.2 构造函数"></a>9.2 构造函数</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> python基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>网络是怎样连接的</title>
+      <link href="/2019/06/08/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+      <url>/2019/06/08/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>写在简书上了</p><p><a href="https://www.jianshu.com/p/23788b303575" target="_blank" rel="noopener">https://www.jianshu.com/p/23788b303575</a></p><p><a href="https://www.jianshu.com/p/ccc0be6b44e5" target="_blank" rel="noopener">https://www.jianshu.com/p/ccc0be6b44e5</a></p><p><a href="https://www.jianshu.com/p/789e0c5c46fa" target="_blank" rel="noopener">https://www.jianshu.com/p/789e0c5c46fa</a></p><p><a href="https://www.jianshu.com/p/9afb731659ee" target="_blank" rel="noopener">https://www.jianshu.com/p/9afb731659ee</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>程序是怎样跑起来的</title>
+      <link href="/2019/06/08/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84%EF%BC%88%E4%B8%8A%EF%BC%89/"/>
+      <url>/2019/06/08/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84%EF%BC%88%E4%B8%8A%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>写在简书了</p><p><a href="https://www.jianshu.com/p/59c197c68d9d" target="_blank" rel="noopener">https://www.jianshu.com/p/59c197c68d9d</a></p><p><a href="https://www.jianshu.com/p/7212a15d26d8" target="_blank" rel="noopener">https://www.jianshu.com/p/7212a15d26d8</a></p><p><a href="https://www.jianshu.com/p/4e202e4f35f0" target="_blank" rel="noopener">https://www.jianshu.com/p/4e202e4f35f0</a></p><div class="row">    <embed src="/pdf/123.pdf" width="100%" height="550" type="application/pdf"></div><div class="row">    <embed src="/pdf/456.pdf" width="100%" height="550" type="application/pdf"></div><div class="row">    <embed src="/pdf/789.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 计算机组成 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python基础教程（第三版）（七）再谈抽象</title>
+      <link href="/2019/06/08/Python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%83%EF%BC%89%E5%86%8D%E8%B0%88%E6%8A%BD%E8%B1%A1/"/>
+      <url>/2019/06/08/Python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%83%EF%BC%89%E5%86%8D%E8%B0%88%E6%8A%BD%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<p><center>python基础教程（七）再谈抽象</center><br><br></p><div class="row">    <embed src="/pdf/6.pdf" width="100%" height="550" type="application/pdf"></div> ]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> python基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python基础教程（第三版）（八）异常</title>
+      <link href="/2019/06/07/Python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%EF%BC%88%E5%85%AB%EF%BC%89%E5%BC%82%E5%B8%B8/"/>
+      <url>/2019/06/07/Python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%EF%BC%88%E5%85%AB%EF%BC%89%E5%BC%82%E5%B8%B8/</url>
+      
+        <content type="html"><![CDATA[<p><center> Python基础教程（第三版）（八）异常</center><br><br></p><div class="row">    <embed src="/pdf/8.pdf" width="100%" height="550" type="application/pdf"></div> ]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> python基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python基础教程（第三版）（六）抽象</title>
+      <link href="/2019/06/07/Python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%EF%BC%88%E5%85%AD%EF%BC%89%E6%8A%BD%E8%B1%A1/"/>
+      <url>/2019/06/07/Python%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%EF%BC%88%E5%85%AD%EF%BC%89%E6%8A%BD%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<p><em>一个菜鸡的挣扎</em><br><em>就总结下</em><br>and <em>如果有大佬不小心看到了发现了错误，就欢迎指正</em></p><h1 id="6-1懒惰是一种美德"><a href="#6-1懒惰是一种美德" class="headerlink" title="6.1懒惰是一种美德"></a>6.1懒惰是一种美德</h1><p>通过创建函数以调用之可以减少代码量</p><h1 id="6-2-抽象和结构"><a href="#6-2-抽象和结构" class="headerlink" title="6.2 抽象和结构"></a>6.2 抽象和结构</h1><blockquote><p>抽象是程序能够被人理解的关键所在（无论对编写程序还是阅读来说，这都至关重要）</p></blockquote><p>函数封装了人不需要关心的实现细节，从而更容易被使用和理解</p><h1 id="6-3-自定义函数"><a href="#6-3-自定义函数" class="headerlink" title="6.3 自定义函数"></a>6.3 自定义函数</h1><h2 id="6-3-1-给函数编写文档"><a href="#6-3-1-给函数编写文档" class="headerlink" title="6.3.1 给函数编写文档"></a>6.3.1 给函数编写文档</h2><p>在def后面添加字符串，相当于给整个函数添加注释，以确保被人理解<br> <em>_doc</em> _是函数的一个属性，可用它来访问函数的文档字符串<br>我自己的练习：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lalala</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="string">"""就瞎写的"""</span></span><br><span class="line">    print(x)</span><br><span class="line"></span><br><span class="line">print(lalala.__doc__)</span><br></pre></td></tr></table></figure><p>结果：<br><img src="17108100-67e3852c05c06c7c.png" alt="运行结果"><br>这里书上说用单引号，但是pycharm中会有提示，要让用连续的三个双引号<br>help()函数可访问有关函数的信息，其中会包含函数的文档字符串</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: help(round)</span><br><span class="line">Help on built-<span class="keyword">in</span> function round <span class="keyword">in</span> module builtins:</span><br><span class="line"></span><br><span class="line">round(...)</span><br><span class="line">    round(number[, ndigits]) -&gt; number</span><br><span class="line"></span><br><span class="line">    Round a number to a given precision <span class="keyword">in</span> decimal digits (default <span class="number">0</span> digits).</span><br><span class="line">    This returns an int when called <span class="keyword">with</span> one argument, otherwise the</span><br><span class="line">    same type <span class="keyword">as</span> the number. ndigits may be negative.</span><br></pre></td></tr></table></figure><h2 id="6-3-2-其实并不是函数的函数"><a href="#6-3-2-其实并不是函数的函数" class="headerlink" title="6.3.2 其实并不是函数的函数"></a>6.3.2 其实并不是函数的函数</h2><p>就是有的函数没有return 或者return后面没有指定值，这么做将会返回None</p><h1 id="6-4-参数魔法"><a href="#6-4-参数魔法" class="headerlink" title="6.4 参数魔法"></a>6.4 参数魔法</h1><h2 id="6-4-1-值从哪里来-略"><a href="#6-4-1-值从哪里来-略" class="headerlink" title="6.4.1 值从哪里来 略"></a>6.4.1 值从哪里来 略</h2><h2 id="6-4-2-我能修改参数吗"><a href="#6-4-2-我能修改参数吗" class="headerlink" title="6.4.2 我能修改参数吗"></a>6.4.2 我能修改参数吗</h2><p>可变参数可以，不可变参数不可以<br>如果不想让可变参数的值在调用函数后发生变化，可以向函数中传递切片或者用copy()传递副本（如果有copy()的话）<br>自己的练习：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change</span><span class="params">(n)</span>:</span></span><br><span class="line">    n[<span class="number">0</span>] = <span class="string">'a'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">change(x)</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure><p>结果;<br><img src="17108100-4c15f297e1019ed1.png" alt></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">change(x[:])</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure><p>结果：<br><img src="17108100-06682b1d3f3a17d1.png" alt></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">change(x.copy())</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure><p>结果：<br><img src="17108100-7d8ec6306fb82aa0.png" alt><br>如果想让不可变参数发生变化，可以使之重新指向返回的值，或者干脆把它放在列表中</p><h2 id="6-4-3-关键字参数和默认值"><a href="#6-4-3-关键字参数和默认值" class="headerlink" title="6.4.3 关键字参数和默认值"></a>6.4.3 关键字参数和默认值</h2><p>这个部分之前看过了，少总结下</p><blockquote><p>像这种用名称指定的参数称为关键字参数，主要优点是有助于澄清各个参数的作用。</p></blockquote><p>关键字参数在传入时的顺序与定义时的不一样也没关系，反正有关键字程序不会认错<br>可以为关键字参数设置默认值，如果在调用该参数没有传入，就使用默认值<br><strong>位置参数不可定义在关键字参数后面！</strong><br>关键字好像只能是字符串，我的试验：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(*a, **b)</span>:</span></span><br><span class="line">    print(a, b)</span><br><span class="line"></span><br><span class="line">b = &#123;<span class="number">1</span>: <span class="string">'a'</span>, <span class="number">2</span>:<span class="string">'b'</span>&#125;</span><br><span class="line">test(<span class="number">1</span>, **b)</span><br></pre></td></tr></table></figure><p>然后会报错：</p><p><img src="17108100-e6ca9fbc25ff2eae.png" alt></p><h2 id="6-4-4-收集参数"><a href="#6-4-4-收集参数" class="headerlink" title="6.4.4 收集参数"></a>6.4.4 收集参数</h2><p>带星号的参数会收集多余的值，放在元组中<br><strong>一个星号不会收集关键字参数！若想收集，可带两个星号，这样会得到字典而非数组</strong><br>位置参数最好不要放在星号参数后面，虽然指定名称也可以调用</p><h2 id="6-4-5-分配参数"><a href="#6-4-5-分配参数" class="headerlink" title="6.4.5 分配参数"></a>6.4.5 分配参数</h2><p>类似于序列解包，可大致理解为与收集参数相反的操作</p><h1 id="6-5-作用域"><a href="#6-5-作用域" class="headerlink" title="6.5 作用域"></a>6.5 作用域</h1><ul><li>vars()函数 ，返回作用域中看不见的字典，最好不要使用它修改字典中的值，因为其结果是不确定的</li><li>在函数中读取全局变量而非访问它，一般不会造成任何问题，但这样通常会不小心写出Bug</li><li>如果局部变量与全局变量重名，必要时可使用globals（）[‘变量名’]来访问它，globals()类似于vars（），也返回一个字典</li><li>在函数中定义变量时，可在前面加入global 来声明它是全局变量</li><li>作用域嵌套，可在函数中再定义函数，并用return返回这个函数</li></ul><p><strong>在函数中访问全局变量：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在函数中访问全局变量</span></span><br><span class="line">y = <span class="string">'全局'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(x)</span>:</span></span><br><span class="line">    print(x+y)</span><br><span class="line">test(<span class="string">'局部'</span>)</span><br></pre></td></tr></table></figure></p><p>结果：<img src="17108100-743464065e7b5bbf.png" alt="在函数中访问全局变量"><br><strong>PS：做作业时发现np.array不用gobal关联也会变化，于是猜测，可变变量似乎不用关联也会变化</strong></p><p><strong>如果局部变量与全局变量重名：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果局部变量与全局变量重名</span></span><br><span class="line">y = <span class="string">'全局'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(y)</span>:</span></span><br><span class="line">    print(y+globals()[<span class="string">'y'</span>])</span><br><span class="line">test(<span class="string">'局部'</span>)</span><br></pre></td></tr></table></figure></p><p>结果同上<br><strong>重新关联全局变量:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重新关联全局变量</span></span><br><span class="line">y = <span class="string">'全局'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> y</span><br><span class="line">    y = <span class="string">'我变了'</span></span><br><span class="line">test()</span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure></p><p>结果：<img src="17108100-a52362afc531f6e6.png" alt="重新关联全局变量"><br><strong>关于作用域嵌套：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: <span class="function"><span class="keyword">def</span> <span class="title">first</span><span class="params">(x)</span>:</span></span><br><span class="line">   ...:     <span class="function"><span class="keyword">def</span> <span class="title">second</span><span class="params">(y)</span>:</span></span><br><span class="line">   ...:         <span class="keyword">return</span> y**x</span><br><span class="line">   ...:     <span class="keyword">return</span> second</span><br><span class="line">   ...: fun = first(<span class="number">2</span>)</span><br><span class="line">   ...: fun(<span class="number">2</span>)</span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">4</span></span><br></pre></td></tr></table></figure></p><h1 id="6-6-递归"><a href="#6-6-递归" class="headerlink" title="6.6 递归"></a>6.6 递归</h1><p>这个就不说了</p><h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><ul><li>主要说了map，filter，reduce，lambda</li><li>在较新的python版本中，可以用列表推导代替map和filter</li><li><p>map:对列表中所有元素执行函数</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">3</span>]: list(map(str,range(<span class="number">10</span>)))</span><br><span class="line">Out[<span class="number">3</span>]: [<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: <span class="comment"># 与下面等价</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: [str(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">Out[<span class="number">5</span>]: [<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>]</span><br></pre></td></tr></table></figure></li><li><p>filter: 对序列中元素执行函数，若为结果真，把它添加到最终要返回的列表中</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">6</span>]: <span class="function"><span class="keyword">def</span>  <span class="title">fun</span><span class="params">(x)</span>:</span></span><br><span class="line">   ...:     <span class="keyword">return</span> x.isalnum()</span><br><span class="line">   ...: list(filter(fun,[<span class="string">'fdas'</span>,<span class="string">'fdsa3'</span>,<span class="string">'1*&amp;'</span>]))</span><br><span class="line">Out[<span class="number">6</span>]: [<span class="string">'fdas'</span>, <span class="string">'fdsa3'</span>]</span><br><span class="line"><span class="comment"># 与[x for x in [....] if x.isalnum] 等价</span></span><br></pre></td></tr></table></figure></li><li><p>reduce: 这个还是看例子</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line">In [<span class="number">2</span>]: reduce(<span class="keyword">lambda</span> x,y: x+y, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>])</span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">45</span></span><br></pre></td></tr></table></figure></li></ul><p>lambda的作用很明显了</p><h2 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h2><blockquote><p>通常，不能给外部作用域内的变量赋值，但如果一定要这样做，可使用关键字nonlocal。这个关键字的用法与global很像，让你能够给外部作用域（<strong>非全局作用域</strong>）内的变量赋值。</p></blockquote><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>抽象、函数定义、函数传参、作用域、函数式编程（主要是函数式编程工具，用以代替定义函数）<br>完了，希望不是在做无用功</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> python基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>汇编语言自学笔记</title>
+      <link href="/2019/06/07/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/"/>
+      <url>/2019/06/07/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>记录一下学习过程，以后遗忘了也方便复习。<br>学习方法：<a href="https://www.bilibili.com/video/av34455803" target="_blank" rel="noopener">b站视频</a> + 汇编语言教材（王爽第3版），视频中用到的工具在 <a href="https://pan.baidu.com/s/1EfNaQOxSYfYg8V5KZFQahw" target="_blank" rel="noopener">百度网盘</a> (提取码: 7evz)中。</p><hr><h1 id="预备"><a href="#预备" class="headerlink" title="预备"></a>预备</h1><h2 id="1-相关软件的安装"><a href="#1-相关软件的安装" class="headerlink" title="1  相关软件的安装"></a>1  相关软件的安装</h2><p>主要是用到了DOSbox和Vim，工具都在网盘中。<br><strong>配置DOSbox</strong></p><ol><li>在D盘中新建一个asm的文件夹，以后在这个文件夹中建立文件练习；</li><li>将网盘中的debug.exe放在asm文件夹下；</li><li>运行DOSbox安装程序（在网盘中），一直next即可；</li><li>找到安装目录C:\Users\Administrator\AppData\Local\DOSBox，编辑配置文件，在最下面添加mount c: d:\asm  和 c:，如下图；这样每次开启软件就可以自动运行命令进入目录，不用手动输入了； </li><li>运行DOSbox，键入debug，再键入d，就可以使用了。</li></ol><p><img src="/img/17108100-3fe1d1dfc3e6561d.png" alt></p><p><strong>配置Vim</strong></p><ol><li>安装Vim，一直next就好；</li><li>找到安装目录，C:\Program Files (x86)\Vim，编辑配置文件，加入<blockquote><p>color evening<br>set nu</p></blockquote></li></ol><p>调成黑色背景并显示行号。<br><strong>编译小练习</strong></p><ol><li>将网盘中的LINK.exe，MASM.exe，temp.txt，temp1.txt拷贝至asm文件夹内，并新建t1.asm把temp.txt中的内容复制进去；</li><li><p>进入DOSbox配置文件，在底部加入</p><blockquote><p>masm t1;<br>link t1;</p></blockquote></li><li><p>打开DOSbox，即可自动完成编译和连接，asm文件夹内会出出现t1.obj和t1.exe;</p></li><li>在DOSbox中键入t1，发现屏幕中出现紫色小区域，表示exe运行成功。</li></ol><p><img src="/img/17108100-cda2990655ee2626.png" alt></p><p><hr></p><h2 id="2-关于编码"><a href="#2-关于编码" class="headerlink" title="2  关于编码"></a>2  关于编码</h2><p><strong>编码是人类表示世界的方式</strong><br>希腊人是如何用地图表示世界地理位置的？<br>用纬度和经度表示。<br>人类是如何表示长度的？<br>有各种单位，如米、厘米、英寸…….<br>人类是如何表示时间的?<br>年、月、日、时、分、秒…….<br>人类是如何表示天上的星星的？<br>有各种星座，金牛座、处女座、猎户座，即用图形表示星星之间的相对位置。<br>以上各种，都是一种编码系统，都是人类对世界的表示。</p><p>又如我们是如何表示我们说话时所发出的声波的？拼音字母a、o、e就是对我们发出的声波的一种表示，对于英语来讲，英语是由音节组成并与读音相对应，也是一种对人类发出声波的一种编码。<br>再一个例子，笛卡尔坐标系，本质上也是一套编码/表示系统，用于表示坐标系中的任意一点。<br><strong>世界与计算与计算要素</strong><br>人类为了观测世界，用编码对世界进行表示，用数学对世界进行描述（计算），<br>即 找到计算要素→对计算要素进行表示→计算<br>一个简单的例子：<br>问：你给了我一个苹果，然后又给了我两个苹果，请问我得到了几个苹果？<br>解：①找到其中的计算要素：一个苹果、两个苹果；②用逻辑符号表示计算要素之间的关系；③进行计算，即1+2=3。<br>总结一下，就是用逻辑表示系统，将计算要素与计算要素之间的逻辑关系表示出来进行计算，所有的学科皆是如此。<br>那就有人问了，你说所有的学科皆是如此，那历史呢，历史也需要这个样吗？<br>这就要拓宽对<code>计算</code>的理解：举一个历史中的例子，比如说一场战役，双方需要把天气、地形以及敌军情况这些计算要素找出来，然后据此制定作战计划进行计算。再比如说心理测试，就是通过收集计算要素，再用计算推断出受测者的心理状态。<br><code>这一切都是可以计算的。</code><br><strong>计算要素与表示系统</strong><br>还是上面的苹果例子。解决这个问题我们可以用阿拉伯数字，也可以用算盘，甚至可以结绳计数，当然效率是有差别的，即<code>一套好的表示系统，可以更好的表示出计算要素以及计算要素与计算要素之间的逻辑关系。</code><br><strong>计算机编程语言是一套什么系统？</strong><br>答案很明显，是一套表示系统。<br>英语是一种语言，汉语也是一种语言，语言是用来互相交流的，我们之间正是由于采用了同一套表示/编码系统，才能理解彼此的意思。<br>计算机编程语言也是用来人与计算机相互交流的。<br>python、java、c++是高级编程语言，而汇编语言是低级编程语言。</p><p>汇编语言虽然使用不便，但是它提供了一种观测手段，可以观测到很多高级语言无法观测到的东西。             </p><p><hr></p><h2 id="3-二进制、十进制与十六进制"><a href="#3-二进制、十进制与十六进制" class="headerlink" title="3  二进制、十进制与十六进制"></a>3  二进制、十进制与十六进制</h2><p>这个就记录几个要点。<br>二进制由一和零组成，1代表有，0代表无。<br>二进制与十进制的快速转换：比如十进制数35，可以拆成32+2+1，把相应的二进数位变为1，得到二进制数10011。<br>十六进制与十进制快速转换：比如十进制数83可以表示为16×5 + 3，表示成十六进制为53H（H是后缀，表示该数为十六进制hex），注意在十六进制中，1有0无规则失效。<br>十六进制与二进制快速转换：用4位二进制代表一位十六进制即可，比如2A，2用二进制表示就是<br>0010，A用二进制表示就是1010，所以2A用二进制表示为00101010。<br><strong>反过来思考</strong><br>4位二进制数最高表示15，即1111。根据1有0无的规则，转换时剪掉0所对应的数就能得到十进制数。比如，1101，代表第二位缺失，那它就表示15-2=13</p><p><hr></p><h1 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h1><p>仅记录一些要点<br><strong>汇编语言由什么组成？</strong></p><ul><li>汇编指令</li><li>伪指令：帮助编译器把汇编语言翻译成机器语言，伪指令自身并不被翻译，它没有对应的机器码</li><li>其它符号：如+、-、*、/等，也没有对应的机器码</li></ul><p><strong>DOSBOX的一些指令</strong><br>-debug -u -d<br>u指令和d指令的解释不同，u指令我们看到的是机器指令和汇编指令，d指令我们看到是数据。</p><p><strong>总线</strong></p><ul><li>地址总线：决定cpu的寻址能力；如果一个cpu有N个地址线，则可以说这个cpu的地址总线的宽度为N。这样的cpu最多可以寻找2的N次方个内存单元。这里的内存单元应该指的是一个字节，即8个二进制位。</li><li>数据总线：决定cpu和其它部件进行数据传送时一次性能够传送多少字节的能力，8根数据总线一次可传送8位二进制数（一个字节），16根数据总线一次性可传送两个字节。</li><li>控制总线：决定了cpu对其他部件的控制能力。</li></ul><p><strong>检测点1.1</strong><br>（1）一个CPU的寻址能力为8KB，那么它的地址总线的宽度为<strong><strong><strong><strong>__</strong></strong></strong></strong>:</p><p>$ 8KB=2^{3}\times 2^{10}B=2^{13}B $，所以地址总线宽度为13。</p><p>其余略。<br><strong>接口</strong></p><p>RAM：允许读写，断电清空；ROM：只需读取，断电不清空。</p><p>每一台PC都有一个主板，上面有核心器件和主要器件，这些器件通过总线相连。这些器件有cpu、存储器、外围芯片组、扩展插槽等。扩展插槽上一般都有RAM内存条和各类接口卡。</p><p>计算机系统中，所有可用程序控制其工作的设备，必须受到cpu的控制。cpu对外部设备不能控制，如显示器、打印机、音响等。直接控制这些设备的是插在扩展插槽上的接口卡，cpu通过接口卡间接控制这些设备。<br><strong>存储器芯片</strong> </p><ul><li><p>随机存储器，用于存放供cpu使用的绝大部分程序和数据。主要由装在主板上的RAM和插在扩展插槽上的RAM组成。</p></li><li><p>装有BIOS（Basic Input/Outpu System 基本输入输出系统）的ROM。</p><p>BIOS是由主板和各类接口卡厂商提供的软件系统，可以通过它进行基本的输入输出。主办的ROM上存放着主板的BIOS（又称为系统BIOS），显卡的ROM上存放着显卡的BIOS等等。</p></li><li><p>接口卡上的RAM：对输入输出的数据进行临时存储。</p></li></ul><p><img src="/img/微信截图_20190625154442.png" alt><br><strong>内存地址空间</strong> </p><p>对cpu来讲，系统中的所有存储器中的存储单元都处于一个统一的一个逻辑存储器中，它的容量受到cpu寻址能力的限制。这个逻辑存储器即是我们所说的内存地址空间。</p><p><img src="/img/微信截图_20190625154839.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 汇编语言 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文章加密</title>
+      <link href="/2019/01/04/justtest/"/>
+      <url>/2019/01/04/justtest/</url>
+      
+        <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">输入密码，查看文章。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="Enter the password." id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">Decrypt</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX182rgTSOV3yrtkNg9s82v7NfdwoN3YUXIuTBJyJUMxYKAYwcGkSzexoky6E7Bcjl/b2aUBi9cbsDBLyMapHHaJPsQVLbTtKK5CBIPf4Kke7UMuLB8YCXYuakY3WQyStb41/GPsEXpeR0g6uHx7l2rfX8UvS/CTkJYG3c6ch12SaEkFSSa6XgKNhqcaldy+M4UfDDLmOQ+Qluw== </div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
