@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "3.9.0"
   },
   "dependencies": {
     "ajv": "^6.9.1",
     "eslint": "^4.12.1",
-    "hexo": "^3.8.0",
+    "hexo": "^3.9.0",
     "hexo-blog-encrypt": "^1.1.12",
     "hexo-deployer-git": "^1.0.0",
     "hexo-deployer-heroku": "^0.1.2",
